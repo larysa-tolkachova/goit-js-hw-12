@@ -65,6 +65,8 @@ function handlerSearch(event) {
         });
       }
 
+      page = 1;
+
       gallery.insertAdjacentHTML('beforeend', creatGallery(data.hits));
       galleryModal.refresh();
       loader.style.display = 'none';
@@ -83,6 +85,7 @@ function handlerSearch(event) {
 async function onLoadMore() {
   page += 1;
   btnLM.disabled = true;
+  console.log(page);
 
   btnLM.style.display = 'none';
   loader.style.display = 'inline-block';
@@ -96,11 +99,15 @@ async function onLoadMore() {
     loader.style.display = 'none';
 
     if (page * perPage >= data.totalHits) {
+      btnLM.style.display = 'none';
       iziToast.info({
         message: "We're sorry, but you've reached the end of search results.",
+        position: 'bottomCenter',
+        timeout: 10000,
       });
+    } else {
+      btnLM.style.display = 'inline-block';
     }
-    btnLM.style.display = 'inline-block';
 
     // Scroll
     const cardHeight = document
