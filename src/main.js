@@ -53,8 +53,6 @@ function handlerSearch(event) {
 
   serviceImages(question) //promise
     .then(data => {
-      console.log(data);
-
       if (data.hits.length === 0) {
         iziToast.show({
           title: '',
@@ -85,14 +83,12 @@ function handlerSearch(event) {
 async function onLoadMore() {
   page += 1;
   btnLM.disabled = true;
-  console.log(page);
 
   btnLM.style.display = 'none';
   loader.style.display = 'inline-block';
 
   try {
     const data = await serviceImages(question, page);
-    console.log(data);
 
     gallery.insertAdjacentHTML('beforeend', creatGallery(data.hits));
     galleryModal.refresh();
