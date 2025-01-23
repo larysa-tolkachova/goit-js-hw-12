@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css'; // Додатковий імпор�
 import SimpleLightbox from 'simplelightbox'; // Описаний в документації
 import 'simplelightbox/dist/simple-lightbox.min.css'; // Додатковий імпорт стилів
 
-import { serviceImages, onLoadMore } from './js/pixabay-api';
+import { serviceImages } from './js/pixabay-api';
 import { creatGallery } from './js/render-functions';
 
 const form = document.querySelector('.group-form');
